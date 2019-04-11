@@ -47,15 +47,16 @@ public class GameScreen extends ScreenAdapter {
 	Rectangle quitBounds;
 	int lastScore;
 	String scoreString;
+	MainMenuScreen big;
 
 	GlyphLayout glyphLayout = new GlyphLayout();
 
-	public GameScreen (SuperJumper game) {
+	public GameScreen (SuperJumper game, MainMenuScreen main) {
 		this.game = game;
-
+		big = main;
 		state = GAME_READY;
-		guiCam = new OrthographicCamera(320, 480);
-		guiCam.position.set(320 / 2, 480 / 2, 0);
+		guiCam = new OrthographicCamera(1920, 1080);
+		guiCam.position.set(1920 / 2, 1080 / 2, 0);
 		touchPoint = new Vector3();
 		worldListener = new WorldListener() {
 			@Override
@@ -243,6 +244,7 @@ public class GameScreen extends ScreenAdapter {
 		game.batcher.draw(Assets.gameOver, 160 - 160 / 2, 240 - 96 / 2, 160, 96);
 		glyphLayout.setText(Assets.font, scoreString);
 		Assets.font.draw(game.batcher, scoreString, 160 - glyphLayout.width / 2, 480 - 20);
+		game.setScreen(big);
 	}
 
 	@Override

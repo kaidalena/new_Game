@@ -24,12 +24,22 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
-	public static Texture background;
+	public static Texture background[] = new Texture[7];
 	public static TextureRegion backgroundRegion;
 
 	public static Texture items;
 	public static Texture atlas;
+	public static Texture prozrachniy;
 	public static TextureRegion mainMenu;
+	public static TextureRegion setting;
+	public static TextureRegion lamp;
+	public static TextureRegion holst;
+	public static TextureRegion next;
+	public static TextureRegion baobab;
+	public static TextureRegion krater;
+	public static TextureRegion back;
+
+
 	public static TextureRegion pauseMenu;
 	public static TextureRegion ready;
 	public static TextureRegion gameOver;
@@ -62,11 +72,24 @@ public class Assets {
 	}
 
 	public static void load () {
-		background = loadTexture("data/Planeta_1PNG.png");
-		backgroundRegion = new TextureRegion(background, 0, 0, 1920, 1080);
+		background[0] = loadTexture("data/4.png");
+		background[1] = loadTexture("data/Planeta_1PNG.png");
+		background[2] = loadTexture("data/mars.jpg");
+		background[3] = loadTexture("data/zemlya.png");
+		backgroundRegion = new TextureRegion(background[0], 0, 0, 1920, 1080);
 
 		items = loadTexture("data/items.png");
 		atlas = loadTexture("data/Atlas.png");
+		prozrachniy = loadTexture("data/prozrach.png");
+
+		setting = new TextureRegion(prozrachniy, 1724, 0, 100, 100);
+		lamp = new TextureRegion(prozrachniy, 1824, 0, 84, 100);
+		holst = new TextureRegion(prozrachniy, 580, 1080-280, 800, 280);
+		next = new TextureRegion(prozrachniy, 1765, 980, 155, 100);
+		baobab = new TextureRegion(atlas, 9, 207, 309, 367);
+		krater = new TextureRegion(atlas, 335, 224, 280, 243);
+		back = new TextureRegion(new Texture("data/back.png"), 0, 0, 348, 345);
+
 		mainMenu = new TextureRegion(items, 0, 224, 300, 110);
 		pauseMenu = new TextureRegion(items, 224, 128, 192, 96);
 		ready = new TextureRegion(items, 320, 224, 192, 32);
@@ -92,15 +115,15 @@ public class Assets {
 
 		font = new BitmapFont(Gdx.files.internal("data/font.fnt"), Gdx.files.internal("data/font.png"), false);
 
-		music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
-		music.setLooping(true);
-		music.setVolume(0.5f);
-		if (Settings.soundEnabled) music.play();
-		jumpSound = Gdx.audio.newSound(Gdx.files.internal("data/jump.wav"));
-		highJumpSound = Gdx.audio.newSound(Gdx.files.internal("data/highjump.wav"));
-		hitSound = Gdx.audio.newSound(Gdx.files.internal("data/hit.wav"));
-		coinSound = Gdx.audio.newSound(Gdx.files.internal("data/coin.wav"));
-		clickSound = Gdx.audio.newSound(Gdx.files.internal("data/click.wav"));
+//		music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
+//		music.setLooping(true);
+//		music.setVolume(0.5f);
+//		if (Settings.soundEnabled) music.play();
+//		jumpSound = Gdx.audio.newSound(Gdx.files.internal("data/jump.wav"));
+//		highJumpSound = Gdx.audio.newSound(Gdx.files.internal("data/highjump.wav"));
+//		hitSound = Gdx.audio.newSound(Gdx.files.internal("data/hit.wav"));
+//		coinSound = Gdx.audio.newSound(Gdx.files.internal("data/coin.wav"));
+//		clickSound = Gdx.audio.newSound(Gdx.files.internal("data/click.wav"));
 	}
 
 	public static void playSound (Sound sound) {

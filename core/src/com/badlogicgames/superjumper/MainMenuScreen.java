@@ -26,53 +26,84 @@ import com.badlogic.gdx.math.Vector3;
 public class MainMenuScreen extends ScreenAdapter {
 	SuperJumper game;
 	OrthographicCamera guiCam;
-	Rectangle soundBounds;
-	Rectangle playBounds;
-	Rectangle highscoresBounds;
-	Rectangle helpBounds;
+	Rectangle settingBounds;
+	Rectangle lampBounds;
+	Rectangle holstBounds;
+	Rectangle nextBounds;
+	Rectangle kraterBounds;
+//	Rectangle soundBounds;
+//	Rectangle playBounds;
+//	Rectangle highscoresBounds;
+//	Rectangle helpBounds;
 	Vector3 touchPoint;
+	int i=0;
 
 	public MainMenuScreen (SuperJumper game) {
 		this.game = game;
 
 		guiCam = new OrthographicCamera(1920, 1080);
 		System.out.println(guiCam.position.x + " " + guiCam.position.y);
-		guiCam.position.set(1920/2
-				, 1080/2, 0);
-		soundBounds = new Rectangle(0, 0, 64, 64);
-		playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
-		highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
-		helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
+		guiCam.position.set(1920/2, 1080/2, 0);
+
+		settingBounds = new Rectangle(1920-100-84, 1080-100, 100, 100);
+		lampBounds = new Rectangle(1920-84, 1080-100, 84, 100);
+		holstBounds = new Rectangle(580, 0, 800, 280);
+		nextBounds = new Rectangle(1765, 0, 155, 100);
+		kraterBounds = new Rectangle(720, 1080-687-243, 280, 243);
+//		soundBounds = new Rectangle(0, 0, 64, 64);
+//		playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
+//		highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
+//		helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
 		touchPoint = new Vector3();
 	}
 
 	public void update () {
+		guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
+
+		if (settingBounds.contains(touchPoint.x, touchPoint.y)) Assets.setting.setTexture(Assets.atlas);
+		else Assets.setting.setTexture(Assets.prozrachniy);
+
+		if (lampBounds.contains(touchPoint.x, touchPoint.y)) Assets.lamp.setTexture(Assets.atlas);
+		else Assets.lamp.setTexture(Assets.prozrachniy);
+
+		if (holstBounds.contains(touchPoint.x, touchPoint.y)) Assets.holst.setTexture(Assets.atlas);
+		else Assets.holst.setTexture(Assets.prozrachniy);
+
+		if (nextBounds.contains(touchPoint.x, touchPoint.y)) Assets.next.setTexture(Assets.atlas);
+		else Assets.next.setTexture(Assets.prozrachniy);
+
 		if (Gdx.input.justTouched()) {
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
-			if (playBounds.contains(touchPoint.x, touchPoint.y)) {
-				Assets.playSound(Assets.clickSound);
-				game.setScreen(new GameScreen(game));
+			if (nextBounds.contains(touchPoint.x, touchPoint.y)) {
+//				game.setScreen(new GameScreen(game));
+				Assets.backgroundRegion.setTexture(Assets.background[++i]);
 				return;
 			}
-			if (highscoresBounds.contains(touchPoint.x, touchPoint.y)) {
-				Assets.playSound(Assets.clickSound);
-				game.setScreen(new HighscoresScreen(game));
+
+			if (kraterBounds.contains(touchPoint.x, touchPoint.y)) {
+//				game.setScreen(new GameScreen(game));
+				game.setScreen(new new_screen(game, this));
 				return;
 			}
-			if (helpBounds.contains(touchPoint.x, touchPoint.y)) {
-				Assets.playSound(Assets.clickSound);
-				game.setScreen(new HelpScreen(game));
-				return;
-			}
-			if (soundBounds.contains(touchPoint.x, touchPoint.y)) {
-				Assets.playSound(Assets.clickSound);
-				Settings.soundEnabled = !Settings.soundEnabled;
-				if (Settings.soundEnabled)
-					Assets.music.play();
-				else
-					Assets.music.pause();
-			}
+//			if (highscoresBounds.contains(touchPoint.x, touchPoint.y)) {
+//				Assets.playSound(Assets.clickSound);
+//				game.setScreen(new HighscoresScreen(game));
+//				return;
+//			}
+//			if (helpBounds.contains(touchPoint.x, touchPoint.y)) {
+//				Assets.playSound(Assets.clickSound);
+//				game.setScreen(new HelpScreen(game));
+//				return;
+//			}
+//			if (soundBounds.contains(touchPoint.x, touchPoint.y)) {
+//				Assets.playSound(Assets.clickSound);
+//				Settings.soundEnabled = !Settings.soundEnabled;
+//				if (Settings.soundEnabled)
+//					Assets.music.play();
+//				else
+//					Assets.music.pause();
+//			}
 		}
 	}
 
@@ -90,9 +121,17 @@ public class MainMenuScreen extends ScreenAdapter {
 
 		game.batcher.enableBlending();
 		game.batcher.begin();
-		game.batcher.draw(Assets.logo, 160 - 274 / 2, 480 - 10 - 142, 274, 142);
-		game.batcher.draw(Assets.mainMenu, 10, 200 - 110 / 2, 300, 110);
-		game.batcher.draw(Settings.soundEnabled ? Assets.soundOn : Assets.soundOff, 0, 0, 64, 64);
+		if (i==1) {
+			game.batcher.draw(Assets.baobab, 1347, 1080-103-367, 309, 367);
+			game.batcher.draw(Assets.krater, 720, 1080-687-243, 280, 243);
+		}
+		if (i>0){
+			game.batcher.draw(Assets.lamp, 1920-84, 1080-100, 84, 100);
+			game.batcher.draw(Assets.holst, 580, 0, 800, 280);
+		}
+		game.batcher.draw(Assets.setting, 1920-100-84, 1080-100, 100, 100);
+		game.batcher.draw(Assets.next, 1765, 0, 155, 100);
+
 		game.batcher.end();
 	}
 
