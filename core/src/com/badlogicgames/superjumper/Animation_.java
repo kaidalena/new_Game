@@ -18,14 +18,14 @@ package com.badlogicgames.superjumper;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class Animation {
+public class Animation_ {
 	public static final int ANIMATION_LOOPING = 0;
 	public static final int ANIMATION_NONLOOPING = 1;
 
 	final TextureRegion[] keyFrames;
 	final float frameDuration;
 
-	public Animation (float frameDuration, TextureRegion... keyFrames) {
+	public Animation_(float frameDuration, TextureRegion... keyFrames) {
 		this.frameDuration = frameDuration;
 		this.keyFrames = keyFrames;
 	}
@@ -40,4 +40,7 @@ public class Animation {
 		}
 		return keyFrames[frameNumber];
 	}
+
+    public void setPlayMode(com.badlogic.gdx.graphics.g2d.Animation.PlayMode loopPingpong) {
+    }
 }

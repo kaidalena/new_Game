@@ -16,13 +16,13 @@ public class new_screen extends ScreenAdapter {
     Vector3 touchPoint;
 
     public new_screen(SuperJumper game, MainMenuScreen main){
+
         this.game = game;
         big = main;
         touchPoint = new Vector3();
         guiCam = new OrthographicCamera(1920, 1080);
         guiCam.position.set(1920 / 2, 1080 / 2, 0);
         backBounds = new Rectangle(1920/2-348/2, 1080/2-345, 348, 345);
-
     }
 
     public void update () {
@@ -31,7 +31,7 @@ public class new_screen extends ScreenAdapter {
             guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
             if (backBounds.contains(touchPoint.x, touchPoint.y)) {
-				game.setScreen(big);
+                game.setScreen(big);
                 return;
             }
         }
@@ -64,5 +64,7 @@ public class new_screen extends ScreenAdapter {
     @Override
     public void pause () {
         Settings.save();
+
     }
+
 }

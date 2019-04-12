@@ -65,10 +65,10 @@ public class WorldRenderer {
 		TextureRegion keyFrame;
 		switch (world.bob.state) {
 		case Bob.BOB_STATE_FALL:
-			keyFrame = Assets.bobFall.getKeyFrame(world.bob.stateTime, Animation.ANIMATION_LOOPING);
+			keyFrame = Assets.bobFall.getKeyFrame(world.bob.stateTime, Animation_.ANIMATION_LOOPING);
 			break;
 		case Bob.BOB_STATE_JUMP:
-			keyFrame = Assets.bobJump.getKeyFrame(world.bob.stateTime, Animation.ANIMATION_LOOPING);
+			keyFrame = Assets.bobJump.getKeyFrame(world.bob.stateTime, Animation_.ANIMATION_LOOPING);
 			break;
 		case Bob.BOB_STATE_HIT:
 		default:
@@ -88,7 +88,7 @@ public class WorldRenderer {
 			Platform platform = world.platforms.get(i);
 			TextureRegion keyFrame = Assets.platform;
 			if (platform.state == Platform.PLATFORM_STATE_PULVERIZING) {
-				keyFrame = Assets.brakingPlatform.getKeyFrame(platform.stateTime, Animation.ANIMATION_NONLOOPING);
+				keyFrame = Assets.brakingPlatform.getKeyFrame(platform.stateTime, Animation_.ANIMATION_NONLOOPING);
 			}
 
 			batch.draw(keyFrame, platform.position.x - 1, platform.position.y - 0.25f, 2, 0.5f);
@@ -105,7 +105,7 @@ public class WorldRenderer {
 		len = world.coins.size();
 		for (int i = 0; i < len; i++) {
 			Coin coin = world.coins.get(i);
-			TextureRegion keyFrame = Assets.coinAnim.getKeyFrame(coin.stateTime, Animation.ANIMATION_LOOPING);
+			TextureRegion keyFrame = Assets.coinAnim.getKeyFrame(coin.stateTime, Animation_.ANIMATION_LOOPING);
 			batch.draw(keyFrame, coin.position.x - 0.5f, coin.position.y - 0.5f, 1, 1);
 		}
 	}
@@ -114,7 +114,7 @@ public class WorldRenderer {
 		int len = world.squirrels.size();
 		for (int i = 0; i < len; i++) {
 			Squirrel squirrel = world.squirrels.get(i);
-			TextureRegion keyFrame = Assets.squirrelFly.getKeyFrame(squirrel.stateTime, Animation.ANIMATION_LOOPING);
+			TextureRegion keyFrame = Assets.squirrelFly.getKeyFrame(squirrel.stateTime, Animation_.ANIMATION_LOOPING);
 			float side = squirrel.velocity.x < 0 ? -1 : 1;
 			if (side < 0)
 				batch.draw(keyFrame, squirrel.position.x + 0.5f, squirrel.position.y - 0.5f, side * 1, 1);
