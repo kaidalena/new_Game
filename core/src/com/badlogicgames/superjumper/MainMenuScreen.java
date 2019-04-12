@@ -1,20 +1,11 @@
 package com.badlogicgames.superjumper;
 
-
-
 import com.badlogic.gdx.Gdx;
-
 import com.badlogic.gdx.ScreenAdapter;
-
 import com.badlogic.gdx.graphics.GL20;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
-
 import com.badlogic.gdx.math.Rectangle;
-
 import com.badlogic.gdx.math.Vector3;
-
-
 
 public class MainMenuScreen extends ScreenAdapter {
 	SuperJumper game;
@@ -24,10 +15,6 @@ public class MainMenuScreen extends ScreenAdapter {
 	Rectangle holstBounds;
 	Rectangle nextBounds;
 	Rectangle kraterBounds;
-//	Rectangle soundBounds;
-//	Rectangle playBounds;
-//	Rectangle highscoresBounds;
-//	Rectangle helpBounds;
 	Vector3 touchPoint;
 	int level=0;
 	private CharacterWorld world;
@@ -47,10 +34,6 @@ public class MainMenuScreen extends ScreenAdapter {
 		holstBounds = new Rectangle(580, 0, 800, 280);
 		nextBounds = new Rectangle(1765, 0, 155, 100);
 		kraterBounds = new Rectangle(720, 1080-687-243, 280, 243);
-//		soundBounds = new Rectangle(0, 0, 64, 64);
-//		playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
-//		highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
-//		helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
 		touchPoint = new Vector3();
 		world = new CharacterWorld(100);
 		renderer = new CharacterRenderer(world, game.batcher);
@@ -81,38 +64,15 @@ public class MainMenuScreen extends ScreenAdapter {
 
 
 			if (nextBounds.contains(touchPoint.x, touchPoint.y)) {
-//				game.setScreen(new GameScreen(game));
 				CharacterRenderer.level++;
 				Assets.backgroundRegion.setTexture(Assets.background[++level]);
 				return;
 			}
 
 			if (kraterBounds.contains(touchPoint.x, touchPoint.y)) {
-//				game.setScreen(new GameScreen(game));
-				game.setScreen(new new_screen(game, this));
+				if(level>0) game.setScreen(new new_screen(game, this));
 				return;
 			}
-
-//			if (highscoresBounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-//				game.setScreen(new HighscoresScreen(game));
-//				return;
-//			}
-
-//			if (helpBounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-//				game.setScreen(new HelpScreen(game));
-//				return;
-//			}
-
-//			if (soundBounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-//				Settings.soundEnabled = !Settings.soundEnabled;
-//				if (Settings.soundEnabled)
-//					Assets.music.play();
-//				else
-//					Assets.music.pause();
-//			}
 		}
 	}
 
@@ -160,7 +120,6 @@ public class MainMenuScreen extends ScreenAdapter {
 
 	@Override
 	public void pause () {
-		Settings.save();
 	}
 
 	@Override
@@ -178,11 +137,6 @@ public class MainMenuScreen extends ScreenAdapter {
 		Gdx.app.log("GameScreen", "hide called");
 	}
 
-//	@Override
-//	public void pause() {
-//		Gdx.app.log("GameScreen", "pause called");
-//	}
-
 	@Override
 	public void resume() {
 		Gdx.app.log("GameScreen", "resume called");
@@ -190,6 +144,5 @@ public class MainMenuScreen extends ScreenAdapter {
 
 	@Override
 	public void dispose() {
-		// оставьте пустым
 	}
 }

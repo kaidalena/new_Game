@@ -46,7 +46,7 @@ public class new_screen extends ScreenAdapter {
 
         game.batcher.disableBlending();
         game.batcher.begin();
-        game.batcher.draw(Assets.backgroundRegion, 0, 0, 1920, 1080);
+        game.batcher.draw(Assets.bg, 0, 0, 1920, 1080);
         game.batcher.end();
 
         game.batcher.enableBlending();
@@ -63,8 +63,6 @@ public class new_screen extends ScreenAdapter {
 
     @Override
     public void pause () {
-        Settings.save();
-
     }
 
 }
