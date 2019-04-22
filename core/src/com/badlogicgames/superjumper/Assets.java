@@ -46,8 +46,11 @@ public class Assets {
 	public static void load () {
 		background[0] = loadTexture("data/4.png");
 		background[1] = loadTexture("data/Planeta_1PNG.png");
-		background[2] = loadTexture("data/mars.jpg");
-		background[3] = loadTexture("data/zemlya.png");
+		background[2] = loadTexture("data/korol.png");
+		background[3] = loadTexture("data/zelpl.png");
+		background[4] = loadTexture("data/planped.png");
+		background[5] = loadTexture("data/stpl.png");
+		background[6] = loadTexture("data/planpn.png");
 		bgt = loadTexture("data/cvety-roza.jpg");
 		bg = new TextureRegion(bgt, 0, 0, 1920, 1080);
 

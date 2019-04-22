@@ -70,7 +70,7 @@ public class MainMenuScreen extends ScreenAdapter {
 			}
 
 			if (kraterBounds.contains(touchPoint.x, touchPoint.y)) {
-				if(level>0) game.setScreen(new new_screen(game, this));
+				if(level>0 && level<6) game.setScreen(new new_screen(game, this));
 				return;
 			}
 		}
