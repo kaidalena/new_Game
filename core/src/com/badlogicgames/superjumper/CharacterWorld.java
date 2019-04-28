@@ -17,7 +17,7 @@ public class CharacterWorld {
         girl.update(delta);
     }
 
-    public Character getRebbit() {
+    public Character getCharacter() {
 //        return rebbit;
         return girl;
     }

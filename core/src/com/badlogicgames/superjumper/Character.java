@@ -14,6 +14,7 @@ public class Character {
     public boolean left = false;
     public boolean right = false;
     public boolean stop = true;
+    public boolean yes = true;
 
 
     public Character(float x, float y, int width, int height) {
@@ -25,10 +26,10 @@ public class Character {
     }
 
     public void update(float delta) {
-        if (up) position.y++;
-        else if (down) position.y--;
-        else if (left) position.x--;
-        else if (right) position.x++;
+            if (up) position.y++;
+            else if (down) position.y--;
+            else if (left) position.x--;
+            else if (right) position.x++;
     }
 
     public void press_stop() {

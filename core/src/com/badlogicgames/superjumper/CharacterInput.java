@@ -1,14 +1,13 @@
 package com.badlogicgames.superjumper;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.math.Vector2;
 
 public class CharacterInput implements InputProcessor {
 
-    private Character myRebbit;
+    private Character myCharacter;
 
     public CharacterInput(Character rebbit) {
-        myRebbit = rebbit;
+        myCharacter = rebbit;
     }
 
     @Override
@@ -21,26 +20,26 @@ public class CharacterInput implements InputProcessor {
         if ( keycode == 19)
         {
             Assets.character_animation = Assets.character_up_animation;
-            myRebbit.press_up();
+            myCharacter.press_up();
         }
         else if (keycode == 21)
         {
             Assets.character_animation = Assets.character_left_animation;
-            myRebbit.press_left();
+            myCharacter.press_left();
         }
         else if (keycode == 22)
         {
             Assets.character_animation = Assets.character_right_animation;
-            myRebbit.press_right();
+            myCharacter.press_right();
         }
         else if (keycode == 20)
         {
             Assets.character_animation = Assets.character_down_animation;
-            myRebbit.press_down();
+            myCharacter.press_down();
         }
         else if (keycode == 62)
         {
-            myRebbit.press_stop();
+            myCharacter.press_stop();
         }
 //        System.out.println(keycode);
         return false;

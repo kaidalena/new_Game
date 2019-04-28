@@ -10,12 +10,13 @@ import com.badlogic.gdx.math.Vector3;
 public class new_screen extends ScreenAdapter {
 
     SuperJumper game;
-    MainMenuScreen big;
+    SuperJumper mini_game;
+    MainMenuScreen_my big;
     OrthographicCamera guiCam;
     Rectangle backBounds;
     Vector3 touchPoint;
 
-    public new_screen(SuperJumper game, MainMenuScreen main){
+    public new_screen(SuperJumper game, MainMenuScreen_my main){
 
         this.game = game;
         big = main;
