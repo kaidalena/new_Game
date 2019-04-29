@@ -14,7 +14,6 @@ public class Character {
     public boolean left = false;
     public boolean right = false;
     public boolean stop = true;
-    public boolean yes = true;
 
 
     public Character(float x, float y, int width, int height) {

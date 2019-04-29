@@ -110,14 +110,14 @@ public class Assets {
 		character_up_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		character_left_animation = new Animation(0.08f, character_left);
 		character_left_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
-		int x=0;
-		for (int i=1; i<=8; i++) {
-			rebbit_go[i-1] = new TextureRegion(atlas, x, 0, 180, 200);
-			x+=180;
-		}
-		rebbit_stop  = new TextureRegion(atlas, 0, 0, 180, 200);
-		rebbit_go_Animation = new Animation(0.08f, rebbit_go);
-		rebbit_go_Animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+//		int x=0;
+//		for (int i=1; i<=8; i++) {
+//			rebbit_go[i-1] = new TextureRegion(atlas, x, 0, 180, 200);
+//			x+=180;
+//		}
+//		rebbit_stop  = new TextureRegion(atlas, 0, 0, 180, 200);
+//		rebbit_go_Animation = new Animation(0.08f, rebbit_go);
+//		rebbit_go_Animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 
 
 		music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));

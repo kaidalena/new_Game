@@ -6,8 +6,8 @@ public class CharacterInput implements InputProcessor {
 
     private Character myCharacter;
 
-    public CharacterInput(Character rebbit) {
-        myCharacter = rebbit;
+    public CharacterInput(Character now) {
+        myCharacter = now;
     }
 
     @Override
@@ -37,16 +37,12 @@ public class CharacterInput implements InputProcessor {
             Assets.character_animation = Assets.character_down_animation;
             myCharacter.press_down();
         }
-        else if (keycode == 62)
-        {
-            myCharacter.press_stop();
-        }
-//        System.out.println(keycode);
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
+        myCharacter.press_stop();
         return false;
     }
 
