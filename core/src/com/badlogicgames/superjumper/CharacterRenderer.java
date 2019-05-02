@@ -18,7 +18,7 @@ public class CharacterRenderer {
             if ( !reb.stop) {
                 batcher.draw((TextureRegion) Assets.character_animation.getKeyFrame(runTime), reb.getX(), reb.getY(), reb.getWidth(), reb.getHeight());
             }
-            else {
+            else if (Planet_go.s){
                 batcher.draw(Assets.character_stop, reb.getX(), reb.getY(), reb.getWidth(), reb.getHeight());
             }
             batcher.end();

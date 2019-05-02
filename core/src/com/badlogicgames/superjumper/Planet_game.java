@@ -33,7 +33,7 @@ public class Planet_game extends Planets {
         }
         game.batcher.draw(Assets.lamp, 1920-84, 1080-100, 84, 100);
         game.batcher.draw(Assets.holst, 580, 0, 800, 280);
-        game.batcher.draw(Assets.text, 705 , 1080-870-92, 600, 92);
+//        game.batcher.draw(Assets.text, 705 , 1080-870-92, 600, 92);
         game.batcher.draw(Assets.setting, 1920-100-84, 1080-100, 100, 100);
         game.batcher.draw(Assets.next, 1765, 0, 155, 100);
         game.batcher.end();

@@ -79,7 +79,6 @@ public class MenuScreen_jump extends ScreenAdapter {
 	}
 
 	public void draw () {
-		System.out.println("one");
 		GL20 gl = Gdx.gl;
 		gl.glClearColor(1, 0, 0, 1);
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

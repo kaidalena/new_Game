@@ -22,12 +22,20 @@ public class Assets {
 	public static Texture prozrachniy;
 	public static Texture zvez;
 	public static Texture pppz;
+	public static Texture zadan1;
+	public static Texture oblaca_;
+	public static Texture text_;
 
+	public static TextureRegion oblaca[] = new TextureRegion[4];
+	public static TextureRegion text[] = new TextureRegion[10];
 	public static TextureRegion privet;
+	public static TextureRegion podskaz;
+	public static TextureRegion golova;
+	public static TextureRegion zadanie;
 	public static TextureRegion ppp;
 	public static TextureRegion pozdrav;
 	public static TextureRegion dobro_pog;
-	public static TextureRegion text;
+//	public static TextureRegion text;
 	public static TextureRegion proz;
 	public static TextureRegion bg;
 	public static TextureRegion zvezda;
@@ -54,6 +62,7 @@ public class Assets {
 	public static Music music;
 	public static Sound page;
 
+	private static int number = 0, x = 0, y = 0, width = 973, height = 401;
 
 	public static Texture loadTexture (String file) {
 		return new Texture(Gdx.files.internal(file));
@@ -73,30 +82,38 @@ public class Assets {
 		privetstvie = loadTexture("data/ajy.jpg");
 		boy_ = loadTexture("data/приветствие.png");
 		privet = new TextureRegion(boy_, 0, 0, 3840,2160);
+		text_ = loadTexture("data/Слова1.png");
+
 
 		backgroundRegion = new TextureRegion(background[0], 0, 0, 1920, 1080);
 
 		atlas = loadTexture("data/Atlas.png");
-		dobro = loadTexture("data/dobro.png");
-		pozdr = loadTexture("data/поздравляем.png");
 		temp = loadTexture("data/girl.png");
 		prozrachniy = loadTexture("data/prozrach.png");
 		zvez = loadTexture("data/zvezda.png");
 		pppz = loadTexture("data/nebo.jpg");
 
-		dobro_pog = new TextureRegion(dobro, 0,0,697,110);
-		pozdrav = new TextureRegion(pozdr, 0,0,5702,2299);
+		for (int i =0; i<10; i++){
+			if (x % 2919 == 0 && x != 0) {
+				x = 0;
+				y += 401;
+			}
+			text[i] = new TextureRegion(text_, x, y, width, height);
+			x+= 973;
+		}
+
+		podskaz = new TextureRegion(atlas, 1204, 245,693, 538);
 		proz = new TextureRegion(prozrachniy, 0,0,502,229);
-		text = new TextureRegion(prozrachniy, 0,0,5702,2299);
+//		text = new TextureRegion(prozrachniy, 0,0,5702,2299);
 
 		ppp = new TextureRegion(pppz, 0,0,1920,1080);
 		zvezda = new TextureRegion(zvez, 0,0,1000,936);
 		setting = new TextureRegion(prozrachniy, 1724, 0, 100, 100);
 		lamp = new TextureRegion(prozrachniy, 1824, 0, 84, 100);
 		holst = new TextureRegion(prozrachniy,654 , 1080-278, 691, 278);
-		next = new TextureRegion(prozrachniy, 1765, 980, 155, 100);
-		baobab = new TextureRegion(atlas, 9, 207, 309, 367);
-		krater = new TextureRegion(atlas, 335, 224, 280, 243);
+		next = new TextureRegion(atlas, 1690, 112, 100, 130);
+		baobab = new TextureRegion(atlas, 0, 207, 367, 378);
+		krater = new TextureRegion(atlas, 355, 230, 280, 243);
 		back = new TextureRegion(new Texture("data/back.png"), 0, 0, 348, 345);
 		int k = 0;
 		for (int j=1; j<=8; j++) {
@@ -107,7 +124,7 @@ public class Assets {
 			k+=48;
 		}
 		for (int r =0; r<8; r++) character_left[r].flip(true, false);
-		character_stop = new TextureRegion(temp, 0, 159, 48, 77);
+		character_stop = new TextureRegion(loadTexture("data/1.png"), 0, 0, 2480, 3508);
 		character_down_animation = new Animation(0.08f, character_down);
 		character_down_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		character_right_animation = new Animation(0.08f, character_right);
