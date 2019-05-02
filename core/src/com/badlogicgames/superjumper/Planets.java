@@ -87,8 +87,8 @@ public abstract class Planets extends Game_Screen {
             }
 
             if (nextBounds.contains(touchPoint.x, touchPoint.y)){
-                game.level++;
-                game.next();
+                    game.level++;
+                    game.next_history();
             }
         }
     }

@@ -6,9 +6,11 @@ import com.badlogic.gdx.graphics.GL20;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static java.lang.Math.pow;
+
 public class Start_screen extends Game_Screen {
 
-    private static int x=270, y=310;
+    private static int x=270, y=310, x_=0 ,y_ = 0;
     private static Timer t;
 
     public Start_screen(SuperJumper main){
@@ -19,11 +21,11 @@ public class Start_screen extends Game_Screen {
             public void run() {
                 x+=2;
                 if (x>=960) y--;
-                else  y++;
+                else  y ++;
                 if (x>=1760) {
                     t.cancel();
                     game.level++;
-                    game.next();
+                    game.next_history();
                 }
             }
         };
@@ -45,14 +47,16 @@ public class Start_screen extends Game_Screen {
         game.batcher.disableBlending();
         game.batcher.begin();
         game.batcher.draw(Assets.backgroundRegion, 0, 0, 1920, 1080);
+
         game.batcher.end();
 
         game.batcher.enableBlending();
         game.batcher.begin();
+//        game.batcher.draw(Assets.privet, 0+x_, 0+y_, 1920, 1080);
         game.batcher.draw(Assets.zvezda, x , 765-471+y, 50, 50);
         game.batcher.draw(Assets.lamp, 1920-84, 1080-100, 84, 100);
         game.batcher.draw(Assets.setting, 1920-100-84, 1080-100, 100, 100);
-        game.batcher.draw(Assets.next, 1765, 0, 155, 100);
+//        game.batcher.draw(Assets.next, 1765, 0, 155, 100);
         game.batcher.end();
     }
 

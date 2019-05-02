@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Assets {
 
 	public static Texture background[] = new Texture[7];
+	public static Texture privetstvie;
+	public static Texture boy_;
 	public static TextureRegion backgroundRegion;
 	public static Texture bgt;
 	public static Texture pozdr;
@@ -21,6 +23,7 @@ public class Assets {
 	public static Texture zvez;
 	public static Texture pppz;
 
+	public static TextureRegion privet;
 	public static TextureRegion ppp;
 	public static TextureRegion pozdrav;
 	public static TextureRegion dobro_pog;
@@ -67,6 +70,9 @@ public class Assets {
 		background[6] = loadTexture("data/planpn.png");
 		bgt = loadTexture("data/cvety-roza.jpg");
 		bg = new TextureRegion(bgt, 0, 0, 1920, 1080);
+		privetstvie = loadTexture("data/ajy.jpg");
+		boy_ = loadTexture("data/приветствие.png");
+		privet = new TextureRegion(boy_, 0, 0, 3840,2160);
 
 		backgroundRegion = new TextureRegion(background[0], 0, 0, 1920, 1080);
 

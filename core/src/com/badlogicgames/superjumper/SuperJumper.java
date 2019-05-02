@@ -5,7 +5,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class SuperJumper extends Game {
-	// used by all screens
 	public int level = 0;
 	public SpriteBatch batcher;
 	public static Game_Screen planeta;
@@ -23,7 +22,7 @@ public class SuperJumper extends Game {
 		super.render();
 	}
 
-	public void next(){
+	public void next_level(){
 		switch(level){
 			case 1:
 			case 3:
@@ -34,6 +33,19 @@ public class SuperJumper extends Game {
 			case 4:
 			case 6:
 				setScreen(new Planet_game(this));
+				break;
+		}
+	}
+
+	public void next_history(){
+		switch(level){
+			case 1:
+			case 3:
+			case 5:
+			case 2:
+			case 4:
+			case 6:
+				setScreen(new History(this, Assets.privetstvie, Assets.privet));
 				break;
 		}
 	}
