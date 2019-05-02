@@ -20,6 +20,7 @@ public class History extends Game_Screen {
     private static  int x=0, y=0;
     private static TextureRegion picture;
 
+
     public History (SuperJumper main, Texture fon, TextureRegion go){
         super(main);
         Assets.backgroundRegion.setTexture(fon);
