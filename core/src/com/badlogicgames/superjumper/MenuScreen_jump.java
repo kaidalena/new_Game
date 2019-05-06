@@ -41,10 +41,10 @@ public class MenuScreen_jump extends ScreenAdapter {
 		this.game = game;
 		this.guiCam = new OrthographicCamera(1920,1080);
 		guiCam.position.set(1920 / 2, 1080 / 2, 0);
-		soundBounds = new Rectangle(0, 0, 64, 64);
-		playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
-		highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
-		helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
+		soundBounds = new Rectangle(0+600, 0+300, 64, 64);
+		playBounds = new Rectangle(160 - 150+600, 200 + 18+600, 300, 36);
+		highscoresBounds = new Rectangle(160 - 150+600, 200 - 18+500, 300, 36);
+		helpBounds = new Rectangle(160 - 150+600, 200 - 18 - 36+400, 300, 36);
 		touchPoint = new Vector3();
 	}
 
@@ -92,9 +92,9 @@ public class MenuScreen_jump extends ScreenAdapter {
 
 		game.batcher.enableBlending();
 		game.batcher.begin();
-		game.batcher.draw(Sets.logo, 160 - 274 / 2, 480 - 10 - 142, 274, 142);
-		game.batcher.draw(Sets.mainMenu, 10, 200 - 110 / 2, 300, 110);
-		game.batcher.draw(Settings.soundEnabled ? Sets.soundOn : Sets.soundOff, 0, 0, 64, 64);
+		game.batcher.draw(Sets.logo, 160 - 274 / 2 + 600, 480 - 10 - 142 + 600, 274, 142);
+		game.batcher.draw(Sets.mainMenu, 10 + 600 , 200 - 110 / 2 +600, 300, 110);
+		game.batcher.draw(Settings.soundEnabled ? Sets.soundOn : Sets.soundOff, 0+600, 0+300, 64, 64);
 		game.batcher.end();	
 	}
 

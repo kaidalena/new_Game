@@ -22,19 +22,21 @@ public class Assets {
 	public static Texture prozrachniy;
 	public static Texture zvez;
 	public static Texture pppz;
-	public static Texture zadan1;
+	public static Texture text2_;
 	public static Texture oblaca_;
 	public static Texture text_;
+	public static Texture but;
 
 	public static TextureRegion oblaca[] = new TextureRegion[4];
 	public static TextureRegion text[] = new TextureRegion[10];
+    public static TextureRegion text2[] = new TextureRegion[11];
 	public static TextureRegion privet;
 	public static TextureRegion podskaz;
-	public static TextureRegion golova;
-	public static TextureRegion zadanie;
+	public static TextureRegion nognici;
+	public static TextureRegion gubka;
 	public static TextureRegion ppp;
-	public static TextureRegion pozdrav;
-	public static TextureRegion dobro_pog;
+	public static TextureRegion vedro;
+	public static TextureRegion schetka;
 //	public static TextureRegion text;
 	public static TextureRegion proz;
 	public static TextureRegion bg;
@@ -49,6 +51,7 @@ public class Assets {
 	public static TextureRegion rebbit_go[] = new TextureRegion[8];
 	public static TextureRegion rebbit_stop;
 	public static TextureRegion character_stop;
+	public static TextureRegion buterfly[] = new TextureRegion[28];
 	public static TextureRegion character_left[] = new TextureRegion[8];
 	public static TextureRegion character_right[] = new TextureRegion[8];
 	public static TextureRegion character_up[] = new TextureRegion[8];
@@ -69,7 +72,7 @@ public class Assets {
 	}
 
 	public static void load () {
-		background[0] = loadTexture("data/4.png");
+		background[0] = loadTexture("data/4_.png");
 //		background[0] = loadTexture("jumper/background.png");
 		background[1] = loadTexture("data/Planeta_1PNG.png");
 		background[2] = loadTexture("data/korol.png");
@@ -83,6 +86,7 @@ public class Assets {
 		boy_ = loadTexture("data/приветствие.png");
 		privet = new TextureRegion(boy_, 0, 0, 3840,2160);
 		text_ = loadTexture("data/Слова1.png");
+		but = loadTexture("data/butterfly.png");
 
 
 		backgroundRegion = new TextureRegion(background[0], 0, 0, 1920, 1080);
@@ -92,6 +96,7 @@ public class Assets {
 		prozrachniy = loadTexture("data/prozrach.png");
 		zvez = loadTexture("data/zvezda.png");
 		pppz = loadTexture("data/nebo.jpg");
+		text2_ = loadTexture("data/Слова2.png");
 
 		for (int i =0; i<10; i++){
 			if (x % 2919 == 0 && x != 0) {
@@ -102,10 +107,37 @@ public class Assets {
 			x+= 973;
 		}
 
+        x = y =0;
+		for (int i = 0; i<9; i++){
+		    text2[i] = new TextureRegion(text2_, x, y, 1460, 699);
+		    if(x==0)  x = 1460;
+		    else {
+		        x=0;
+		        y+=699;
+            }
+        }
+		text2[9] = new TextureRegion(text2_,1684, 2957, 330, 375);
+        text2[10] = new TextureRegion(text2_,2014, 2938, 325, 439);
+
 		podskaz = new TextureRegion(atlas, 1204, 245,693, 538);
 		proz = new TextureRegion(prozrachniy, 0,0,502,229);
 //		text = new TextureRegion(prozrachniy, 0,0,5702,2299);
 
+		x = y =0;
+		for (int i=0; i<28; i++) {
+			if (i == 14) {
+				x=0;
+				y = 65;
+			}
+			buterfly[i] = new TextureRegion(but, x,y,70,65);
+			if (i<14) buterfly[i].flip(true, false);
+			x+=70;
+		}
+
+		nognici = new TextureRegion(atlas, 786, 388, 99, 54);
+		gubka = new TextureRegion(atlas, 776, 290, 71, 67);
+		vedro = new TextureRegion(atlas, 679, 344, 76, 99);
+		schetka = new TextureRegion(atlas, 688, 282, 56, 43);
 		ppp = new TextureRegion(pppz, 0,0,1920,1080);
 		zvezda = new TextureRegion(zvez, 0,0,1000,936);
 		setting = new TextureRegion(prozrachniy, 1724, 0, 100, 100);

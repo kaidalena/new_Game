@@ -11,7 +11,11 @@ import java.util.TimerTask;
 public class Planet_go extends Planets {
 
     private static Rectangle kraterBounds;
-    private static Rectangle yes;
+    private static Rectangle schetkaBounds;
+    private static Rectangle vedroBounds;
+    private static Rectangle gubkaBounds;
+    private static Rectangle nogniciBounds;
+    private static Rectangle baobabBounds;
     private static Timer w;
 
 
@@ -20,15 +24,18 @@ public class Planet_go extends Planets {
         text = Assets.text[number];
         if (game.level==1){
             kraterBounds = new Rectangle(720, 1080-687-243, 280, 243);
-            yes = new Rectangle(1920/2-500/2, 1080/2-400/2, 500, 400);
+            baobabBounds = new Rectangle(1282, 1080 - 71 - 378, 367, 378);
+            schetkaBounds = new Rectangle( 641, 1080 - 393 - 70, 96, 70);
+            vedroBounds = new Rectangle( 1248, 1080 - 516 - 99, 76, 99);
+            nogniciBounds = new Rectangle( 1193, 1080 - 711 - 54, 99, 54);
+            gubkaBounds = new Rectangle( 968, 1080 - 240 - 65, 69, 65);
+
         }
-        s = false;
-        world = new CharacterWorld(100);
-        renderer = new CharacterRenderer(world, game.batcher);
-        Gdx.input.setInputProcessor(new CharacterInput(world.getCharacter()));
     }
 
     public void update () {
+
+        zadanie_krater();
         text = Assets.text[number];
         Standard_button();
 
@@ -37,10 +44,21 @@ public class Planet_go extends Planets {
 
 //            установка для превой планеты
             if (game.level == 1) {
-                if ( kraterBounds.contains(touchPoint.x, touchPoint.y) && s) {
-                    game.setScreen(new Mini_jimper(game, this));
-                    Assets.paus();
+//                if ( kraterBounds.contains(touchPoint.x, touchPoint.y) && s) {
+                if ( kraterBounds.contains(touchPoint.x, touchPoint.y) && Assets.schetka.getTexture() == Assets.prozrachniy &&
+                        Assets.gubka.getTexture() == Assets.prozrachniy && Assets.vedro.getTexture() == Assets.prozrachniy) {
+                    Assets.krater.setTexture(Assets.prozrachniy);
+                    view();
+//                    game.setScreen(new Mini_jimper(game, this));
+//                    Assets.paus();
                 }
+
+                if ( baobabBounds.contains(touchPoint.x, touchPoint.y) && Assets.nognici.getTexture() == Assets.prozrachniy
+                && Assets.krater.getTexture() == Assets.prozrachniy) {
+                    Assets.baobab.setTexture(Assets.prozrachniy);
+                    view();
+                }
+
                 if (!s && yes.contains(touchPoint.x, touchPoint.y)){
                     if ((number>=0 && number<=4) ||
                             number == 6 || number == 8)
@@ -76,35 +94,27 @@ public class Planet_go extends Planets {
         if (game.level == 1) {
             game.batcher.draw(Assets.baobab, 1282, 1080 - 71 - 378, 367, 378);
             game.batcher.draw(Assets.krater, 720, 1080 - 687 - 243, 280, 243);
+            game.batcher.draw(Assets.schetka, 641, 1080 - 393 - 70, 56, 43);
+            game.batcher.draw(Assets.vedro, 1248, 1080 - 516 - 99, 76, 99);
+            game.batcher.draw(Assets.nognici, 1193, 1080 - 711 - 54, 99, 54);
+            game.batcher.draw(Assets.gubka, 968, 1080 - 240 - 67, 71, 67);
         }
-        game.batcher.draw(Assets.lamp, 1920 - 84, 1080 - 100, 84, 100);
-        game.batcher.draw(Assets.setting, 1920 - 100 - 84, 1080 - 100, 100, 100);
-        if (lamp) {
-            game.batcher.draw(Assets.podskaz, 1920 - 693, 1080 - 540, 693, 538);
-            game.batcher.draw(text, 1275, 1080 -247- 141, 600, 247);
-        }
-        if (!s) drow_text();
+        Standard_drow();
         game.batcher.end();
     }
 
-        public void view() {
-            number++;
-            s = false;
-//            Assets.holst.setTexture(Assets.atlas);
-//            Assets.text = Assets.pozdrav;
-//
-//            TimerTask two = new TimerTask() {
-//                @Override
-//                public void run() {
-//                    Assets.holst.setTexture(Assets.prozrachniy);
-//                    Assets.text.setTexture(Assets.prozrachniy);
-//                    s=true;
-//                    w.cancel();
-//                }
-//            };
-//            w = new Timer();
-//            w.scheduleAtFixedRate(two,4000,4000);
+        public void zadanie_krater (){
+            if (schetkaBounds.contains(world.getCharacter().getX(), world.getCharacter().getY())){
+                Assets.schetka.setTexture(Assets.prozrachniy);
+            }
+            if (vedroBounds.contains(world.getCharacter().getX(), world.getCharacter().getY())){
+                Assets.vedro.setTexture(Assets.prozrachniy);
+            }
+            if (nogniciBounds.contains(world.getCharacter().getX(), world.getCharacter().getY())){
+                Assets.nognici.setTexture(Assets.prozrachniy);
+            }
+            if (gubkaBounds.contains(world.getCharacter().getX(), world.getCharacter().getY())){
+                Assets.gubka.setTexture(Assets.prozrachniy);
+            }
         }
-
-
 }

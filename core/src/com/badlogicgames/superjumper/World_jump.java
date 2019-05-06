@@ -193,7 +193,7 @@ public class World_jump {
 				len = coins.size();
 				listener.coin();
 				score += Coin.COIN_SCORE;
-				if (score>=10)  Mini_jimper.ret();
+				if (score>=100)  Mini_jimper.ret();
 			}
 
 		}

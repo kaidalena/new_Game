@@ -75,6 +75,5 @@ public class Character {
     public float getRotation() {
         return rotation;
     }
-
 }
 

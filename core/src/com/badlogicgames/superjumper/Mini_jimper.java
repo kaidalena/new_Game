@@ -9,9 +9,9 @@ public class Mini_jimper extends ScreenAdapter {
 
     public static SuperJumper game;
     MenuScreen_jump one;
-    public static Planet_go temp;
+    public static Planet_game temp;
 
-    public Mini_jimper (SuperJumper game, Planet_go p){
+    public Mini_jimper (SuperJumper game, Planet_game p){
         this.game=game;
         this.temp = p;
         Settings.load();
