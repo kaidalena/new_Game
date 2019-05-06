@@ -156,7 +156,8 @@ public class Assets {
 			k+=48;
 		}
 		for (int r =0; r<8; r++) character_left[r].flip(true, false);
-		character_stop = new TextureRegion(loadTexture("data/1.png"), 0, 0, 2480, 3508);
+		rebbit_stop= new TextureRegion(loadTexture("data/1.png"), 0, 0, 2480, 3508);
+		character_stop = new TextureRegion(temp, 0, 159, 48, 77);
 		character_down_animation = new Animation(0.08f, character_down);
 		character_down_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		character_right_animation = new Animation(0.08f, character_right);

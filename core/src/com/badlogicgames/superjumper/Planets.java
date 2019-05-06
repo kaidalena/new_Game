@@ -132,21 +132,21 @@ public abstract class Planets extends Game_Screen {
         switch (number) {
             case 3:
                 game.batcher.draw(Assets.next, 1803, 1080 - 130 - 112, 100, 130);
-                game.batcher.draw(Assets.character_stop, 500, 0, 350, 520);
+                game.batcher.draw(Assets.rebbit_stop, 500, 0, 350, 520);
                 break;
             case 4:
                 game.batcher.draw(Assets.next, 1690, 1080 - 130 - 112, 100, 130);
-                game.batcher.draw(Assets.character_stop, 225, 280, 350, 520);
+                game.batcher.draw(Assets.rebbit_stop, 225, 280, 350, 520);
                 break;
             case 0:
             case 1:
             case 5:
             case 9:
             case 10:
-                game.batcher.draw(Assets.character_stop, 225, 0, 350, 520);
+                game.batcher.draw(Assets.rebbit_stop, 225, 0, 350, 520);
                 break;
             default:
-                game.batcher.draw(Assets.character_stop, 1115, 0, 350, 520);
+                game.batcher.draw(Assets.rebbit_stop, 1115, 0, 350, 520);
                 break;
         }
     }
