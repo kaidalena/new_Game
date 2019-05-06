@@ -40,7 +40,6 @@ public class Start_screen extends Game_Screen {
                     if (i == 27) i=14; else i++;
                 }
                 else if (x_==45){
-                    System.out.println(x + "  " +y);
                     t.cancel();
                     game.level++;
                     game.next_history();

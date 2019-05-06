@@ -27,7 +27,14 @@ public class History extends Game_Screen {
         picture = go;
         load();
         t = new Timer();
-        t.scheduleAtFixedRate(diagonal,30,30);
+        switch (game.level){
+            case 1:
+                t.scheduleAtFixedRate(diagonal,40,40);
+                break;
+            case 2:
+                t.scheduleAtFixedRate(square,40,40);
+                break;
+        }
     }
 
     public void update (){
@@ -66,9 +73,9 @@ public class History extends Game_Screen {
             @Override
             public void run() {
                 time++;
-                if (time<=60 || time>=121) x = ++y;
+                if (time<=65 || time>=130) x = ++y;
                 else  x = --y;
-                if (time==181) {
+                if (time==200) {
                     x = y = time = 0;
                     t.cancel();
                     game.next_level();
@@ -83,7 +90,18 @@ public class History extends Game_Screen {
 
         square = new TimerTask() {
             @Override
-            public void run() { }
+            public void run() {
+                time++;
+                if (time<=50) ++y;
+                else if (time<=100) x++;
+                else if (time<=150) y--;
+                else x--;
+                if (time==200) {
+                    x = y = time = 0;
+                    t.cancel();
+                    game.next_level();
+                }
+            }
         };
 
         diamond = new TimerTask() {

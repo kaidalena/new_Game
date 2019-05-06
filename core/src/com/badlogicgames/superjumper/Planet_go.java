@@ -2,11 +2,9 @@ package com.badlogicgames.superjumper;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class Planet_go extends Planets {
 
@@ -21,7 +19,7 @@ public class Planet_go extends Planets {
 
     public Planet_go (SuperJumper main){
         super(main);
-        text = Assets.text[number];
+        text = Assets.text1[number];
         if (game.level==1){
             kraterBounds = new Rectangle(720, 1080-687-243, 280, 243);
             baobabBounds = new Rectangle(1282, 1080 - 71 - 378, 367, 378);
@@ -29,14 +27,13 @@ public class Planet_go extends Planets {
             vedroBounds = new Rectangle( 1248, 1080 - 516 - 99, 76, 99);
             nogniciBounds = new Rectangle( 1193, 1080 - 711 - 54, 99, 54);
             gubkaBounds = new Rectangle( 968, 1080 - 240 - 65, 69, 65);
-
         }
     }
 
     public void update () {
 
         zadanie_krater();
-        text = Assets.text[number];
+        text = Assets.text1[number];
         Standard_button();
 
         if (Gdx.input.justTouched()) {
@@ -44,13 +41,10 @@ public class Planet_go extends Planets {
 
 //            установка для превой планеты
             if (game.level == 1) {
-//                if ( kraterBounds.contains(touchPoint.x, touchPoint.y) && s) {
                 if ( kraterBounds.contains(touchPoint.x, touchPoint.y) && Assets.schetka.getTexture() == Assets.prozrachniy &&
                         Assets.gubka.getTexture() == Assets.prozrachniy && Assets.vedro.getTexture() == Assets.prozrachniy) {
                     Assets.krater.setTexture(Assets.prozrachniy);
                     view();
-//                    game.setScreen(new Mini_jimper(game, this));
-//                    Assets.paus();
                 }
 
                 if ( baobabBounds.contains(touchPoint.x, touchPoint.y) && Assets.nognici.getTexture() == Assets.prozrachniy
@@ -60,9 +54,10 @@ public class Planet_go extends Planets {
                 }
 
                 if (!s && yes.contains(touchPoint.x, touchPoint.y)){
-                    if ((number>=0 && number<=4) ||
-                            number == 6 || number == 8)
+                    if ((number>=0 && number<=4) || number == 6 || number == 8)
                         number++;
+                    else if (number == (Assets.text1.length -1))
+                            game.next_history();
                     else s=true;
                 }
             }

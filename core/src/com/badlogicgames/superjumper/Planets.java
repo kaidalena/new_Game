@@ -1,7 +1,6 @@
 package com.badlogicgames.superjumper;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -155,18 +154,5 @@ public abstract class Planets extends Game_Screen {
         game.batcher.draw(text, 1920 / 2 - 1460 / 2, 1080 / 2 - 700 / 2, 1460, 699);
         game.batcher.draw(Assets.text2[10], 100, 100, 325, 439);
         game.batcher.draw(Assets.text2[9], 1920-100-375, 100, 330, 375);
-//        switch(number){
-//            case 1:
-//            case 2:
-//            case 3:
-//            case 4:
-//            case 0:
-//            case 5:
-//            case 6:
-//            case 7:
-//            case 8:
-//                game.batcher.draw(Assets.character_stop, 225, 0, 350, 520);
-//                break;
-//    }
     }
 }

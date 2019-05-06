@@ -28,7 +28,7 @@ public class Assets {
 	public static Texture but;
 
 	public static TextureRegion oblaca[] = new TextureRegion[4];
-	public static TextureRegion text[] = new TextureRegion[10];
+	public static TextureRegion text1[] = new TextureRegion[10];
     public static TextureRegion text2[] = new TextureRegion[11];
 	public static TextureRegion privet;
 	public static TextureRegion podskaz;
@@ -103,7 +103,7 @@ public class Assets {
 				x = 0;
 				y += 401;
 			}
-			text[i] = new TextureRegion(text_, x, y, width, height);
+			text1[i] = new TextureRegion(text_, x, y, width, height);
 			x+= 973;
 		}
 
@@ -121,7 +121,6 @@ public class Assets {
 
 		podskaz = new TextureRegion(atlas, 1204, 245,693, 538);
 		proz = new TextureRegion(prozrachniy, 0,0,502,229);
-//		text = new TextureRegion(prozrachniy, 0,0,5702,2299);
 
 		x = y =0;
 		for (int i=0; i<28; i++) {
@@ -166,14 +165,6 @@ public class Assets {
 		character_up_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		character_left_animation = new Animation(0.08f, character_left);
 		character_left_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
-//		int x=0;
-//		for (int i=1; i<=8; i++) {
-//			rebbit_go[i-1] = new TextureRegion(atlas, x, 0, 180, 200);
-//			x+=180;
-//		}
-//		rebbit_stop  = new TextureRegion(atlas, 0, 0, 180, 200);
-//		rebbit_go_Animation = new Animation(0.08f, rebbit_go);
-//		rebbit_go_Animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 
 
 		music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
