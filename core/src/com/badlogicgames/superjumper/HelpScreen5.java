@@ -51,7 +51,7 @@ public class HelpScreen5 extends ScreenAdapter {
 
 			if (nextBounds.contains(touchPoint.x, touchPoint.y)) {
 				Sets.playSound(Sets.clickSound);
-				game.setScreen(new MenuScreen_jump(game));
+				game.setScreen(new MenuScreenJump(game));
 			}
 		}
 	}

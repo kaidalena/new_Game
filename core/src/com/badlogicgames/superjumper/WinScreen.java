@@ -34,7 +34,7 @@ public class WinScreen extends ScreenAdapter {
 			currentMessage++;
 			if(currentMessage == messages.length) {
 				currentMessage--;
-				game.setScreen(new MenuScreen_jump(game));
+				game.setScreen(new MenuScreenJump(game));
 			}
 		}
 		

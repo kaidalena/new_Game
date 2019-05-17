@@ -37,8 +37,8 @@ public class Squirrel extends DynamicGameObject {
 			position.x = SQUIRREL_WIDTH / 2;
 			velocity.x = SQUIRREL_VELOCITY;
 		}
-		if (position.x > World_jump.WORLD_WIDTH - SQUIRREL_WIDTH / 2) {
-			position.x = World_jump.WORLD_WIDTH - SQUIRREL_WIDTH / 2;
+		if (position.x > WorldJump.WORLD_WIDTH - SQUIRREL_WIDTH / 2) {
+			position.x = WorldJump.WORLD_WIDTH - SQUIRREL_WIDTH / 2;
 			velocity.x = -SQUIRREL_VELOCITY;
 		}
 		stateTime += deltaTime;

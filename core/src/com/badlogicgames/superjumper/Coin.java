@@ -16,7 +16,7 @@
 
 package com.badlogicgames.superjumper;
 
-public class Coin extends GameObject_jump {
+public class Coin extends GameObjectJump {
 	public static final float COIN_WIDTH = 0.5f;
 	public static final float COIN_HEIGHT = 0.8f;
 	public static final int COIN_SCORE = 10;

@@ -7,14 +7,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class SuperJumper extends Game {
 	public int level = 0;
 	public SpriteBatch batcher;
-	public static Game_Screen planeta;
+	public static GameScreen planeta;
 
 
 	@Override
 	public void create () {
 		batcher = new SpriteBatch();
 		Assets.load();
-		setScreen(new Start_screen(this));
+		setScreen(new StartScreen(this));
 	}
 
 	@Override
@@ -27,12 +27,12 @@ public class SuperJumper extends Game {
 			case 1:
 			case 3:
 			case 5:
-				setScreen(new Planet_go(this));
+				setScreen(new PlanetGo(this));
 				break;
 			case 2:
 			case 4:
 			case 6:
-				setScreen(new Planet_game(this));
+				setScreen(new PlanetGame(this));
 				break;
 		}
 	}

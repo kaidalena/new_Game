@@ -20,70 +20,78 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
-public class HighscoresScreen extends ScreenAdapter {
-	SuperJumper game;
+public class MenuScreenJump extends ScreenAdapter {
+	public static SuperJumper game;
 	OrthographicCamera guiCam;
-	Rectangle backBounds;
+	Rectangle soundBounds;
+	Rectangle playBounds;
+	Rectangle highscoresBounds;
+	Rectangle helpBounds;
 	Vector3 touchPoint;
-	String[] highScores;
-	float xOffset = 0;
-	GlyphLayout glyphLayout = new GlyphLayout();
 
-	public HighscoresScreen (SuperJumper game) {
+
+	public MenuScreenJump(SuperJumper game) {
 		this.game = game;
-
-		guiCam = new OrthographicCamera(1920, 1080);
+		this.guiCam = new OrthographicCamera(1920,1080);
 		guiCam.position.set(1920 / 2, 1080 / 2, 0);
-		backBounds = new Rectangle(0, 0, 64, 64);
+		soundBounds = new Rectangle(0+600, 0+300, 64, 64);
+		playBounds = new Rectangle(160 - 150+600, 200 + 18+600, 300, 36);
+		highscoresBounds = new Rectangle(160 - 150+600, 200 - 18+500, 300, 36);
+		helpBounds = new Rectangle(160 - 150+600, 200 - 18 - 36+400, 300, 36);
 		touchPoint = new Vector3();
-		highScores = new String[5];
-		for (int i = 0; i < 5; i++) {
-			highScores[i] = i + 1 + ". " + Settings.highscores[i];
-			glyphLayout.setText(Sets.font, highScores[i]);
-			xOffset = Math.max(glyphLayout.width, xOffset);
-		}
-		xOffset = 160 - xOffset / 2 + Sets.font.getSpaceXadvance() / 2;
 	}
 
 	public void update () {
 		if (Gdx.input.justTouched()) {
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
-			if (backBounds.contains(touchPoint.x, touchPoint.y)) {
+			if (playBounds.contains(touchPoint.x, touchPoint.y)) {
 				Sets.playSound(Sets.clickSound);
-				game.setScreen(new MenuScreenJump(game));
+				game.setScreen(new GameScreenJump(game));
 				return;
+			}
+			if (highscoresBounds.contains(touchPoint.x, touchPoint.y)) {
+				Sets.playSound(Sets.clickSound);
+				game.setScreen(new HighscoresScreen(game));
+				return;
+			}
+			if (helpBounds.contains(touchPoint.x, touchPoint.y)) {
+				Sets.playSound(Sets.clickSound);
+				game.setScreen(new HelpScreen(game));
+				return;
+			}
+			if (soundBounds.contains(touchPoint.x, touchPoint.y)) {
+				Sets.playSound(Sets.clickSound);
+				Settings.soundEnabled = !Settings.soundEnabled;
+				if (Settings.soundEnabled)
+					Sets.music.play();
+				else
+					Sets.music.pause();
 			}
 		}
 	}
 
 	public void draw () {
 		GL20 gl = Gdx.gl;
+		gl.glClearColor(1, 0, 0, 1);
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		guiCam.update();
-
 		game.batcher.setProjectionMatrix(guiCam.combined);
+
 		game.batcher.disableBlending();
 		game.batcher.begin();
-		game.batcher.draw(Sets.backgroundRegion, 0, 0, 320, 480);
+		game.batcher.draw(Sets.backgroundRegion, 0, 0, 1920, 1080);
 		game.batcher.end();
 
 		game.batcher.enableBlending();
 		game.batcher.begin();
-		game.batcher.draw(Sets.highScoresRegion, 10, 360 - 16, 300, 33);
-
-		float y = 230;
-		for (int i = 4; i >= 0; i--) {
-			Sets.font.draw(game.batcher, highScores[i], xOffset, y);
-			y += Sets.font.getLineHeight();
-		}
-
-		game.batcher.draw(Sets.arrow, 0, 0, 64, 64);
-		game.batcher.end();
+		game.batcher.draw(Sets.logo, 160 - 274 / 2 + 600, 480 - 10 - 142 + 600, 274, 142);
+		game.batcher.draw(Sets.mainMenu, 10 + 600 , 200 - 110 / 2 +600, 300, 110);
+		game.batcher.draw(Settings.soundEnabled ? Sets.soundOn : Sets.soundOff, 0+600, 0+300, 64, 64);
+		game.batcher.end();	
 	}
 
 	@Override
@@ -91,4 +99,11 @@ public class HighscoresScreen extends ScreenAdapter {
 		update();
 		draw();
 	}
+
+	@Override
+	public void pause () {
+		Settings.save();
+	}
+
+
 }

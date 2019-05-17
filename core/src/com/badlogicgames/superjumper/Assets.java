@@ -139,8 +139,8 @@ public class Assets {
 		schetka = new TextureRegion(atlas, 688, 282, 56, 43);
 		ppp = new TextureRegion(pppz, 0,0,1920,1080);
 		zvezda = new TextureRegion(zvez, 0,0,1000,936);
-		setting = new TextureRegion(prozrachniy, 1724, 0, 100, 100);
-		lamp = new TextureRegion(prozrachniy, 1824, 0, 84, 100);
+		setting = new TextureRegion(atlas, 1724, 0, 100, 100);
+		lamp = new TextureRegion(atlas, 1824, 0, 84, 100);
 		holst = new TextureRegion(prozrachniy,654 , 1080-278, 691, 278);
 		next = new TextureRegion(atlas, 1690, 112, 100, 130);
 		baobab = new TextureRegion(atlas, 0, 207, 367, 378);

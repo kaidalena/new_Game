@@ -16,7 +16,7 @@
 
 package com.badlogicgames.superjumper;
 
-public class Spring extends GameObject_jump {
+public class Spring extends GameObjectJump {
 	public static float SPRING_WIDTH = 0.3f;
 	public static float SPRING_HEIGHT = 0.3f;
 

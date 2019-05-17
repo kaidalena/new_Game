@@ -25,10 +25,10 @@ public class Character {
     }
 
     public void update(float delta) {
-            if (up) position.y++;
-            else if (down) position.y--;
-            else if (left) position.x--;
-            else if (right) position.x++;
+            if (up) position.y+=2;
+            else if (down) position.y-=2;
+            else if (left) position.x-=2;
+            else if (right) position.x+=2;
     }
 
     public void press_stop() {

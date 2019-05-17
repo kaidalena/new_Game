@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
-public abstract class Planets extends Game_Screen {
+public abstract class Planets extends GameScreen {
 
     public static Rectangle nextBounds;
     public static Rectangle yes;
@@ -12,9 +12,9 @@ public abstract class Planets extends Game_Screen {
     public static CharacterRenderer renderer;
     public static float runTime;
     public static boolean s = true;
-    public static boolean lamp = false;
     public static TextureRegion text;
     public static int number = 0, x = 0, y = 0, width = 0, height = 0;
+    public boolean flag = false;
 
     public Planets(SuperJumper main) {
         super(main);
@@ -50,17 +50,17 @@ public abstract class Planets extends Game_Screen {
 
     @Override
     public void show() {
-        Gdx.app.log("GameScreen_jump", "show called");
+        Gdx.app.log("GameScreenJump", "show called");
     }
 
     @Override
     public void hide() {
-        Gdx.app.log("GameScreen_jump", "hide called");
+        Gdx.app.log("GameScreenJump", "hide called");
     }
 
     @Override
     public void resume() {
-        Gdx.app.log("GameScreen_jump", "resume called");
+        Gdx.app.log("GameScreenJump", "resume called");
     }
 
     @Override
@@ -71,16 +71,8 @@ public abstract class Planets extends Game_Screen {
     public void Standard_button() {
         guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 
-        if (settingBounds.contains(touchPoint.x, touchPoint.y)) Assets.setting.setTexture(Assets.atlas);
-        else Assets.setting.setTexture(Assets.prozrachniy);
-
-        if (lampBounds.contains(touchPoint.x, touchPoint.y)) {
-            lamp = true;
-            Assets.lamp.setTexture(Assets.atlas);
-        } else {
-            lamp = false;
-            Assets.lamp.setTexture(Assets.prozrachniy);
-        }
+        if (lampBounds.contains(touchPoint.x, touchPoint.y)) flag = true;
+        else flag = false;
 
         if (Gdx.input.justTouched()) {
             guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
@@ -100,9 +92,9 @@ public abstract class Planets extends Game_Screen {
     public void Standard_drow(){
         game.batcher.draw(Assets.lamp, 1920-84, 1080-100, 84, 100);
         game.batcher.draw(Assets.setting, 1920-100-84, 1080-100, 100, 100);
-        if (lamp) {
+        if (flag) {
             game.batcher.draw(Assets.podskaz, 1920 - 693, 1080 - 540, 693, 538);
-            game.batcher.draw(text, 1275, 1080 -247- 141, 600, 247);
+            game.batcher.draw(text, 1275, 1080 - 247 - 141, 600, 247);
         }
         if (!s) drow_text();
     }
@@ -110,6 +102,7 @@ public abstract class Planets extends Game_Screen {
     public void view() {
         number++;
         s = false;
+        renderer.visible = false;
     }
 
     public void drow_text() {

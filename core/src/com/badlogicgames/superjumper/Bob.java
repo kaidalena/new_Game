@@ -35,7 +35,7 @@ public class Bob extends DynamicGameObject {
 	}
 
 	public void update (float deltaTime) {
-		velocity.add(World_jump.gravity.x * deltaTime, World_jump.gravity.y * deltaTime);
+		velocity.add(WorldJump.gravity.x * deltaTime, WorldJump.gravity.y * deltaTime);
 		position.add(velocity.x * deltaTime, velocity.y * deltaTime);
 		bounds.x = position.x - bounds.width / 2;
 		bounds.y = position.y - bounds.height / 2;
@@ -54,8 +54,8 @@ public class Bob extends DynamicGameObject {
 			}
 		}
 
-		if (position.x < 0) position.x = World_jump.WORLD_WIDTH;
-		if (position.x > World_jump.WORLD_WIDTH) position.x = 0;
+		if (position.x < 0) position.x = WorldJump.WORLD_WIDTH;
+		if (position.x > WorldJump.WORLD_WIDTH) position.x = 0;
 
 		stateTime += deltaTime;
 	}

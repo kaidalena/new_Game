@@ -50,9 +50,9 @@ public class Platform extends DynamicGameObject {
 				velocity.x = -velocity.x;
 				position.x = PLATFORM_WIDTH / 2;
 			}
-			if (position.x > World_jump.WORLD_WIDTH - PLATFORM_WIDTH / 2) {
+			if (position.x > WorldJump.WORLD_WIDTH - PLATFORM_WIDTH / 2) {
 				velocity.x = -velocity.x;
-				position.x = World_jump.WORLD_WIDTH - PLATFORM_WIDTH / 2;
+				position.x = WorldJump.WORLD_WIDTH - PLATFORM_WIDTH / 2;
 			}
 		}
 

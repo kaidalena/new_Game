@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class History extends Game_Screen {
+public class History extends GameScreen {
     private static int time=0;
     public static Timer t;
     public static Timer proyavlenie;
@@ -57,8 +57,8 @@ public class History extends Game_Screen {
         game.batcher.enableBlending();
         game.batcher.begin();
         game.batcher.draw(picture, x , y, 1920, 1080);
-        game.batcher.draw(Assets.lamp, 1920-84, 1080-100, 84, 100);
-        game.batcher.draw(Assets.setting, 1920-100-84, 1080-100, 100, 100);
+        if (visibleLamp) game.batcher.draw(Assets.lamp, 1920-84, 1080-100, 84, 100);
+        if (visibleSound) game.batcher.draw(Assets.setting, 1920-100-84, 1080-100, 100, 100);
         game.batcher.end();
     }
 

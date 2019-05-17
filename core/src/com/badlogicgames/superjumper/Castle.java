@@ -16,7 +16,7 @@
 
 package com.badlogicgames.superjumper;
 
-public class Castle extends GameObject_jump {
+public class Castle extends GameObjectJump {
 	public static float CASTLE_WIDTH = 1.7f;
 	public static float CASTLE_HEIGHT = 1.7f;
 
