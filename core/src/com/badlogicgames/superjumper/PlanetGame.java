@@ -2,24 +2,20 @@ package com.badlogicgames.superjumper;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.math.Rectangle;
 
 public class PlanetGame extends Planets {
 
-    private static Rectangle tronBounds;
-
-    public PlanetGame(SuperJumper main){
-        super(main);
-        tronBounds = new Rectangle(895, 1080-95-175, 135, 175);
+    public PlanetGame(SuperGame main, int mainObject, MyObject ... ob){
+        super(main,mainObject,ob);
     }
 
     public void update () {
         text = Assets.text2[number];
-        Standard_button();
+        standardButton();
         if (game.level == 2) {
             if (Gdx.input.justTouched()) {
                 guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-                if (tronBounds.contains(touchPoint.x, touchPoint.y)) {
+                if (object[0].position.contains(touchPoint.x, touchPoint.y)) {
                     game.setScreen(new MiniJimper(game, this));
                     Assets.paus();
                 }
@@ -28,7 +24,11 @@ public class PlanetGame extends Planets {
                     if ((number>=0 && number<=3) ||
                             (number >= 5 && number < 8))
                         number++;
-                    else s=true;
+                    else
+                    {
+                        s=true;
+                        renderer.visible = true;
+                    }
                 }
             }
         }
@@ -48,7 +48,13 @@ public class PlanetGame extends Planets {
 
         game.batcher.enableBlending();
         game.batcher.begin();
-        Standard_drow();
+        standardDrow();
         game.batcher.end();
+    }
+
+    @Override
+    public void next(){
+        game.level++;
+        game.nextHistory();
     }
 }

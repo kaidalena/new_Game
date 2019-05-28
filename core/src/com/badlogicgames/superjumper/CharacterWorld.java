@@ -9,7 +9,7 @@ public class CharacterWorld {
 
     public CharacterWorld (int midPointY) {
 //        rebbit = new Character(1920/2-180/2, 1080/2 - 200/2, 180, 200);
-        girl = new Character(1920/2-180/2, 1080/2 - 200/2, 70, 100);
+        girl = new Character(980, 570, 70, 100);
     }
 
     public void update(float delta) {

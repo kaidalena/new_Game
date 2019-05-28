@@ -25,7 +25,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 public class HighscoresScreen extends ScreenAdapter {
-	SuperJumper game;
+	SuperGame game;
 	OrthographicCamera guiCam;
 	Rectangle backBounds;
 	Vector3 touchPoint;
@@ -33,7 +33,7 @@ public class HighscoresScreen extends ScreenAdapter {
 	float xOffset = 0;
 	GlyphLayout glyphLayout = new GlyphLayout();
 
-	public HighscoresScreen (SuperJumper game) {
+	public HighscoresScreen (SuperGame game) {
 		this.game = game;
 
 		guiCam = new OrthographicCamera(1920, 1080);

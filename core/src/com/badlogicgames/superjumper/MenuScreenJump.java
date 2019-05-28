@@ -24,7 +24,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 public class MenuScreenJump extends ScreenAdapter {
-	public static SuperJumper game;
+	public static SuperGame game;
 	OrthographicCamera guiCam;
 	Rectangle soundBounds;
 	Rectangle playBounds;
@@ -33,7 +33,7 @@ public class MenuScreenJump extends ScreenAdapter {
 	Vector3 touchPoint;
 
 
-	public MenuScreenJump(SuperJumper game) {
+	public MenuScreenJump(SuperGame game) {
 		this.game = game;
 		this.guiCam = new OrthographicCamera(1920,1080);
 		guiCam.position.set(1920 / 2, 1080 / 2, 0);

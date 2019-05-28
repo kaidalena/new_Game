@@ -12,7 +12,7 @@
 //import java.util.TimerTask;
 //
 //public class MainMenuScreen_my extends ScreenAdapter {
-//	public static SuperJumper game;
+//	public static SuperGame game;
 //	public static OrthographicCamera guiCam;
 //	public static TextureRegion text;
 //	Rectangle settingBounds;
@@ -32,7 +32,7 @@
 //	boolean g=false;
 //	boolean s = true;
 //
-//	public MainMenuScreen_my(SuperJumper game) {
+//	public MainMenuScreen_my(SuperGame game) {
 //
 //		this.game = game;
 //		guiCam = new OrthographicCamera(1920, 1080);

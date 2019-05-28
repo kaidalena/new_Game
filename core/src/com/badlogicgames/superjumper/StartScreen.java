@@ -14,8 +14,9 @@ public class StartScreen extends GameScreen {
     private static int x_= 0 ;
     private static boolean line = false, parab = true;
     private static Timer t;
+    private int h =0;
 
-    public StartScreen(SuperJumper main){
+    public StartScreen(SuperGame main){
 
         super(main);
         TimerTask p = new TimerTask() {
@@ -35,14 +36,13 @@ public class StartScreen extends GameScreen {
                     x_++;
                     if (x_%7==0) x++;
                     y = ((x - 270) * (-586 / 20) + 761);
-//                    y = - (int)pow(((7000*(x-270))+761),0.5);
                     if (y <= 175) {line = false; x_=0; i=0;}
                     if (i == 27) i=14; else i++;
                 }
                 else if (x_==45){
                     t.cancel();
                     game.level++;
-                    game.next_history();
+                    game.nextHistory();
                 }
                 else {x_++; if (i==27) i = 14; else i++;}
 
@@ -53,7 +53,8 @@ public class StartScreen extends GameScreen {
     }
 
     public void update (){
-        Standard_button();
+        standardButton();
+        if (h == 9) h=0;
     }
 
     public void draw (){
@@ -84,30 +85,9 @@ public class StartScreen extends GameScreen {
     }
 
     @Override
-    public void pause () {
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void show() {
-        Gdx.app.log("GameScreenJump", "show called");
-    }
-
-    @Override
-    public void hide() {
-        Gdx.app.log("GameScreenJump", "hide called");
-    }
-
-    @Override
-    public void resume() {
-        Gdx.app.log("GameScreenJump", "resume called");
-    }
-
-    @Override
-    public void dispose() {
+    public void next(){
+        t.cancel();
+        game.level++;
+        game.nextHistory();
     }
 }

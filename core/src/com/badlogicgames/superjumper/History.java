@@ -8,10 +8,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static java.lang.Math.pow;
+
 public class History extends GameScreen {
     private static int time=0;
     public static Timer t;
-    public static Timer proyavlenie;
     public static TimerTask pokaz;
     public static TimerTask diagonal;
     public static TimerTask circle;
@@ -21,24 +22,30 @@ public class History extends GameScreen {
     private static TextureRegion picture;
 
 
-    public History (SuperJumper main, Texture fon, TextureRegion go){
+    public History (SuperGame main, Texture fon, TextureRegion go){
         super(main);
+        System.out.println();
         Assets.backgroundRegion.setTexture(fon);
         picture = go;
         load();
         t = new Timer();
         switch (game.level){
             case 1:
+                x=100;
+                y=10;
                 t.scheduleAtFixedRate(diagonal,40,40);
                 break;
             case 2:
                 t.scheduleAtFixedRate(square,40,40);
                 break;
+            case 3:
+                t.scheduleAtFixedRate(diagonal,40,40);
+                break;
         }
     }
 
     public void update (){
-        Standard_button();
+        standardButton();
     }
 
     public void draw () {
@@ -78,28 +85,40 @@ public class History extends GameScreen {
                 if (time==200) {
                     x = y = time = 0;
                     t.cancel();
-                    game.next_level();
+                    game.nextLevel();
                 }
             }
         };
 
         circle = new TimerTask() {
             @Override
-            public void run() {}
+            public void run() {
+                time++;
+                if (time<=20) x-=2;
+                else if (time<=40) x+=2;
+                else if (time<60) x-=2;
+                else if (time == 60) {
+                    x = y = time = 0;
+                    t.cancel();
+                    game.nextLevel();
+                }
+                y = (int) (pow((400 - (x - 100)*(x - 100)), 0.5) + 30);
+                System.out.println(y);
+            }
         };
 
         square = new TimerTask() {
             @Override
             public void run() {
                 time++;
-                if (time<=50) ++y;
-                else if (time<=100) x++;
-                else if (time<=150) y--;
+                if (time<=60) ++y;
+                else if (time<=120) x++;
+                else if (time<=180) y--;
                 else x--;
-                if (time==200) {
+                if (time==240) {
                     x = y = time = 0;
                     t.cancel();
-                    game.next_level();
+                    game.nextLevel();
                 }
             }
         };
@@ -113,6 +132,11 @@ public class History extends GameScreen {
             @Override
             public void run() {}
         };
+    }
 
+    @Override
+    public void next(){
+        t.cancel();
+        game.nextLevel();
     }
 }

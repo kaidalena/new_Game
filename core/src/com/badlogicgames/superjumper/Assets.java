@@ -11,52 +11,37 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Assets {
 
 	public static Texture background[] = new Texture[7];
+	public static Texture history[] = new Texture[7];
 	public static Texture privetstvie;
-	public static Texture boy_;
 	public static TextureRegion backgroundRegion;
-	public static Texture bgt;
-	public static Texture pozdr;
-	public static Texture dobro;
 	public static Texture atlas;
 	public static Texture temp;
-	public static Texture prozrachniy;
 	public static Texture zvez;
 	public static Texture pppz;
 	public static Texture text2_;
-	public static Texture oblaca_;
 	public static Texture text_;
 	public static Texture but;
-
-	public static TextureRegion oblaca[] = new TextureRegion[4];
+	public static TextureRegion hist[] = new TextureRegion[7];
 	public static TextureRegion text1[] = new TextureRegion[10];
     public static TextureRegion text2[] = new TextureRegion[11];
-	public static TextureRegion privet;
 	public static TextureRegion podskaz;
 	public static TextureRegion nognici;
 	public static TextureRegion gubka;
 	public static TextureRegion ppp;
 	public static TextureRegion vedro;
 	public static TextureRegion schetka;
-//	public static TextureRegion text;
-	public static TextureRegion proz;
-	public static TextureRegion bg;
-	public static TextureRegion zvezda;
 	public static TextureRegion setting;
 	public static TextureRegion lamp;
-	public static TextureRegion holst;
 	public static TextureRegion next;
 	public static TextureRegion baobab;
 	public static TextureRegion krater;
-	public static TextureRegion back;
-	public static TextureRegion rebbit_go[] = new TextureRegion[8];
-	public static TextureRegion rebbit_stop;
-	public static TextureRegion character_stop;
 	public static TextureRegion buterfly[] = new TextureRegion[28];
+	public static TextureRegion character;
+	public static TextureRegion character_stop;
 	public static TextureRegion character_left[] = new TextureRegion[8];
 	public static TextureRegion character_right[] = new TextureRegion[8];
 	public static TextureRegion character_up[] = new TextureRegion[8];
 	public static TextureRegion character_down[] = new TextureRegion[8];
-	public static Animation rebbit_go_Animation;
 	public static Animation character_left_animation;
 	public static Animation character_right_animation;
 	public static Animation character_up_animation;
@@ -73,27 +58,24 @@ public class Assets {
 
 	public static void load () {
 		background[0] = loadTexture("data/4_.png");
-//		background[0] = loadTexture("jumper/background.png");
 		background[1] = loadTexture("data/Planeta_1PNG.png");
 		background[2] = loadTexture("data/korol.png");
-		background[3] = loadTexture("data/zelpl.png");
+		background[3] = loadTexture("data/честолюбец.png");
 		background[4] = loadTexture("data/planped.png");
 		background[5] = loadTexture("data/stpl.png");
 		background[6] = loadTexture("data/planpn.png");
-		bgt = loadTexture("data/cvety-roza.jpg");
-		bg = new TextureRegion(bgt, 0, 0, 1920, 1080);
+		history[0] = loadTexture("data/приветствие.png");
+		history[1] = loadTexture("data/история2.png");
+		history[2] = loadTexture("data/история3.png");
+		hist[0] = new TextureRegion(history[0], 0, 0, 3840,2160);
+		hist[1] = new TextureRegion(history[1], 0, 0, 1544, 866);
+		hist[2] = new TextureRegion(history[2], 0, 0, 1920, 1080);
+
 		privetstvie = loadTexture("data/ajy.jpg");
-		boy_ = loadTexture("data/приветствие.png");
-		privet = new TextureRegion(boy_, 0, 0, 3840,2160);
 		text_ = loadTexture("data/Слова1.png");
 		but = loadTexture("data/butterfly.png");
-
-
-		backgroundRegion = new TextureRegion(background[0], 0, 0, 1920, 1080);
-
 		atlas = loadTexture("data/Atlas.png");
 		temp = loadTexture("data/girl.png");
-		prozrachniy = loadTexture("data/prozrach.png");
 		zvez = loadTexture("data/zvezda.png");
 		pppz = loadTexture("data/nebo.jpg");
 		text2_ = loadTexture("data/Слова2.png");
@@ -120,7 +102,6 @@ public class Assets {
         text2[10] = new TextureRegion(text2_,2014, 2938, 325, 439);
 
 		podskaz = new TextureRegion(atlas, 1204, 245,693, 538);
-		proz = new TextureRegion(prozrachniy, 0,0,502,229);
 
 		x = y =0;
 		for (int i=0; i<28; i++) {
@@ -133,19 +114,17 @@ public class Assets {
 			x+=70;
 		}
 
+		backgroundRegion = new TextureRegion(background[0], 0, 0, 1920, 1080);
 		nognici = new TextureRegion(atlas, 786, 388, 99, 54);
 		gubka = new TextureRegion(atlas, 776, 290, 71, 67);
 		vedro = new TextureRegion(atlas, 679, 344, 76, 99);
 		schetka = new TextureRegion(atlas, 688, 282, 56, 43);
 		ppp = new TextureRegion(pppz, 0,0,1920,1080);
-		zvezda = new TextureRegion(zvez, 0,0,1000,936);
 		setting = new TextureRegion(atlas, 1724, 0, 100, 100);
 		lamp = new TextureRegion(atlas, 1824, 0, 84, 100);
-		holst = new TextureRegion(prozrachniy,654 , 1080-278, 691, 278);
 		next = new TextureRegion(atlas, 1690, 112, 100, 130);
 		baobab = new TextureRegion(atlas, 0, 207, 367, 378);
 		krater = new TextureRegion(atlas, 355, 230, 280, 243);
-		back = new TextureRegion(new Texture("data/back.png"), 0, 0, 348, 345);
 		int k = 0;
 		for (int j=1; j<=8; j++) {
 			character_right[j-1] = new TextureRegion(temp, k, 77, 48, 77);
@@ -155,7 +134,7 @@ public class Assets {
 			k+=48;
 		}
 		for (int r =0; r<8; r++) character_left[r].flip(true, false);
-		rebbit_stop= new TextureRegion(loadTexture("data/1.png"), 0, 0, 2480, 3508);
+		character= new TextureRegion(loadTexture("data/1.png"), 0, 0, 2480, 3508);
 		character_stop = new TextureRegion(temp, 0, 159, 48, 77);
 		character_down_animation = new Animation(0.08f, character_down);
 		character_down_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);

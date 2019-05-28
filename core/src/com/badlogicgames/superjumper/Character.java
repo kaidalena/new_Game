@@ -2,6 +2,8 @@ package com.badlogicgames.superjumper;
 
 import com.badlogic.gdx.math.Vector2;
 
+import static java.lang.Math.pow;
+
 public class Character {
     private Vector2 position;
     private Vector2 velocity;
@@ -9,6 +11,8 @@ public class Character {
     private float rotation; // For handling bird rotation
     private int width;
     private int height;
+    private int radius = 415, centreX = 930, centreY = 500;
+
     public boolean up = false;
     public boolean down = false;
     public boolean left = false;
@@ -25,10 +29,10 @@ public class Character {
     }
 
     public void update(float delta) {
-            if (up) position.y+=2;
-            else if (down) position.y-=2;
-            else if (left) position.x-=2;
-            else if (right) position.x+=2;
+            if (up && (position.y <= calculationCircle(position.x, centreX, centreY, 1 ))) position.y+=2;
+            else if (down && (position.y >= calculationCircle(position.x, centreX, centreY, -1 ))) position.y-=2;
+            else if (left && (position.x >= calculationCircle(position.y, centreY, centreX, -1 ))) position.x-=2;
+            else if (right && (position.x <= calculationCircle(position.y, centreY, centreX, 1 ))) position.x+=2;
     }
 
     public void press_stop() {
@@ -74,6 +78,10 @@ public class Character {
 
     public float getRotation() {
         return rotation;
+    }
+
+    public double calculationCircle(float one, int a, int b, int c){
+        return pow((radius*radius - (one - a)*(one-a)), 0.5)*c+b;
     }
 }
 

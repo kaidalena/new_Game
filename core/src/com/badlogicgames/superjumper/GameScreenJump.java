@@ -34,7 +34,7 @@ public class GameScreenJump extends ScreenAdapter {
 	static final int GAME_LEVEL_END = 3;
 	static final int GAME_OVER = 4;
 
-	SuperJumper game;
+	SuperGame game;
 
 	int state;
 	OrthographicCamera guiCam;
@@ -50,7 +50,7 @@ public class GameScreenJump extends ScreenAdapter {
 
 	GlyphLayout glyphLayout = new GlyphLayout();
 
-	public GameScreenJump(SuperJumper game) {
+	public GameScreenJump(SuperGame game) {
 		this.game = game;
 
 		state = GAME_READY;
