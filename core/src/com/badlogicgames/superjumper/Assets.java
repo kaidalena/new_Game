@@ -38,10 +38,10 @@ public class Assets {
 	public static TextureRegion buterfly[] = new TextureRegion[28];
 	public static TextureRegion character;
 	public static TextureRegion character_stop;
-	public static TextureRegion character_left[] = new TextureRegion[8];
-	public static TextureRegion character_right[] = new TextureRegion[8];
-	public static TextureRegion character_up[] = new TextureRegion[8];
-	public static TextureRegion character_down[] = new TextureRegion[8];
+	public static TextureRegion character_left[] = new TextureRegion[5];
+	public static TextureRegion character_right[] = new TextureRegion[5];
+	public static TextureRegion character_up[] = new TextureRegion[5];
+	public static TextureRegion character_down[] = new TextureRegion[5];
 	public static Animation character_left_animation;
 	public static Animation character_right_animation;
 	public static Animation character_up_animation;
@@ -75,7 +75,7 @@ public class Assets {
 		text_ = loadTexture("data/Слова1.png");
 		but = loadTexture("data/butterfly.png");
 		atlas = loadTexture("data/Atlas.png");
-		temp = loadTexture("data/girl.png");
+		temp = loadTexture("data/sprayt.png");
 		zvez = loadTexture("data/zvezda.png");
 		pppz = loadTexture("data/nebo.jpg");
 		text2_ = loadTexture("data/Слова2.png");
@@ -126,16 +126,16 @@ public class Assets {
 		baobab = new TextureRegion(atlas, 0, 207, 367, 378);
 		krater = new TextureRegion(atlas, 355, 230, 280, 243);
 		int k = 0;
-		for (int j=1; j<=8; j++) {
-			character_right[j-1] = new TextureRegion(temp, k, 77, 48, 77);
-			character_down[j-1] = new TextureRegion(temp, k, 159, 48, 76);
-			character_up[j-1]= new TextureRegion(temp, k, 237, 48, 77);
-			character_left[j-1] = new TextureRegion(temp, k, 77, 48, 77);
-			k+=48;
+		for (int j=1; j<=5; j++) {
+			character_right[j-1] = new TextureRegion(temp, k, 305, 147, 305);
+			character_down[j-1] = new TextureRegion(temp, k, 610, 147, 305);
+			character_up[j-1]= new TextureRegion(temp, k, 915, 147, 305);
+			character_left[j-1] = new TextureRegion(temp, k, 305, 147, 305);
+			k+=147;
 		}
-		for (int r =0; r<8; r++) character_left[r].flip(true, false);
+		for (int r =0; r<5; r++) character_left[r].flip(true, false);
 		character= new TextureRegion(loadTexture("data/1.png"), 0, 0, 2480, 3508);
-		character_stop = new TextureRegion(temp, 0, 159, 48, 77);
+		character_stop = new TextureRegion(temp, 147, 0, 147, 305);
 		character_down_animation = new Animation(0.08f, character_down);
 		character_down_animation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		character_right_animation = new Animation(0.08f, character_right);
