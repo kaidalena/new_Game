@@ -101,7 +101,7 @@ public abstract class Planets extends GameScreen {
         switch (number) {
             case 3:
                 game.batcher.draw(Assets.next, 1803, 1080 - 130 - 112, 100, 130);
-                game.batcher.draw(Assets.character, 520, 0, 350, 520);
+                game.batcher.draw(Assets.character, 600, 0, 350, 520);
                 break;
             case 4:
                 game.batcher.draw(Assets.next, 1690, 1080 - 130 - 112, 100, 130);

@@ -15,7 +15,7 @@ public class PlanetGame extends Planets {
         if (game.level == 2) {
             if (Gdx.input.justTouched()) {
                 guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-                if (object[0].position.contains(touchPoint.x, touchPoint.y)) {
+                if (object[0].position.contains(touchPoint.x, touchPoint.y) && !s) {
                     game.setScreen(new MiniJimper(game, this));
                     Assets.paus();
                 }
@@ -24,8 +24,11 @@ public class PlanetGame extends Planets {
                     if ((number>=0 && number<=3) ||
                             (number >= 5 && number < 8))
                         number++;
-                    else
-                    {
+                    else if (number == 8){
+                        game.level++;
+                        game.nextHistory();
+                    }
+                    else {
                         s=true;
                         renderer.visible = true;
                     }
